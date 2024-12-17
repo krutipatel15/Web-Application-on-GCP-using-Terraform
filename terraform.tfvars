@@ -1,0 +1,6 @@
+project-id = "high-mountain-444601-a7"
+region = "us-central1-a"
+vpc_network_name = "my-vpc"
+vpc_network_description = "vpc for web app"
+public_subnet_name = "my-public-subnet"
+public_subnet_ip_range =  "10.0.1.0/24"
