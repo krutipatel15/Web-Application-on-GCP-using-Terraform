@@ -36,3 +36,10 @@ variable "compute_instance_group_manager_name" {
     type = string
     description = "compute instance group manager name"
 }
+variable "instance_name" {
+    type = list(string)
+    description = "instance name"
+}
+locals {
+  modified_instance_name=[for instance_name in var.instance_name : "prod-${instance_name}"]
+}

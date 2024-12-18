@@ -17,7 +17,8 @@ resource "google_compute_instance_template" "web_template" {
 resource "google_compute_instance_group_manager" "web_instances" {
   name               = var.compute_instance_group_manager_name
   zone = var.region
-  base_instance_name = "instance"
+  for_each = toset(local.modified_instance_name)
+  base_instance_name = each.value
   version {
     instance_template = google_compute_instance_template.web_template.self_link
   }
