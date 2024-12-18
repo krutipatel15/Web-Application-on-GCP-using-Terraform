@@ -6,9 +6,9 @@ resource "google_compute_network" "vpc_network" {
 
 resource "google_compute_subnetwork" "public_subnet" {
   name          = var.public_subnet_name
-  ip_cidr_range = "10.0.1.0/24"
+  ip_cidr_range = var.public_subnet_ip_range
   network       = google_compute_network.vpc_network.id
-  region        = "us-central1"
+  region        = var.region
 }
 
 resource "google_compute_firewall" "ssh" {
@@ -20,19 +20,19 @@ resource "google_compute_firewall" "ssh" {
     ports    = ["22"]
   }
 
-  source_ranges = ["0.0.0.0/0"]  # Allows access from anywhere
+  source_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_router" "default_router" {
-  name    = "my-router"
-  region  = "us-central1"
+  name    = var.compute_router_name
+  region  = var.region
   network = google_compute_network.vpc_network.id
 }
 
 resource "google_compute_router_nat" "default_router_nat" {
-  name   = "my-nat"
+  name   = var.compute_router_nat_name
   router = google_compute_router.default_router.name
-  region = "us-central1"
+  region = var.region
 
   nat_ip_allocate_option = "AUTO_ONLY"
 

@@ -1,5 +1,5 @@
 resource "google_compute_instance_template" "web_template" {
-  name        = "web-instance-template"
+  name        = var.compute_instance_template_name
   machine_type = "e2-medium"
 
   disk {
@@ -15,8 +15,8 @@ resource "google_compute_instance_template" "web_template" {
 }
 
 resource "google_compute_instance_group_manager" "web_instances" {
-  name               = "web-instance-group"
-  zone = "us-central1-a"
+  name               = var.compute_instance_group_manager_name
+  zone = var.region
   base_instance_name = "instance"
   version {
     instance_template = google_compute_instance_template.web_template.self_link
