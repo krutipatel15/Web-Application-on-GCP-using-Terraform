@@ -51,6 +51,34 @@ variable "instance_target_size" {
     description = "number of intstances to be created"
   
 }
+variable "compute_global_address_name" {
+  type = string
+}
+variable "compute_target_http_proxy_name" {
+    type = string  
+}
+variable "compute_url_map_name" {
+    type = string
+  
+}
+variable "compute_backend_service_name" {
+    type = string  
+}
+variable "sql_user" {
+    type = string
+    sensitive = true
+  
+}
+variable "sql_password" {
+    type = string
+    sensitive = true
+}
 locals {
   modified_instance_name=[for instance_name in var.instance_name : "prod-${instance_name}"]
+}
+variable "db_instance_name" {
+    type = string  
+}
+variable "db_version_name" {
+    type = string  
 }
