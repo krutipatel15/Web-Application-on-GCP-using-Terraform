@@ -8,4 +8,7 @@ compute_router_nat_name = "my-router-nat"
 compute_router_name = "my-router"
 compute_instance_group_manager_name = "my-instance-group-manager"
 compute_instance_template_name = "my-template"
+instance_target_size = 3
+machine_type = "e2.medium"
 instance_name = ["inst1","inst2","inst3",]
+source_image = "debian-cloud/debian-11"

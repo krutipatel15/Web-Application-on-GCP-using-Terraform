@@ -1,10 +1,10 @@
 resource "google_compute_instance_template" "web_template" {
   name        = var.compute_instance_template_name
-  machine_type = "e2-medium"
+  machine_type = var.machine_type
 
   disk {
     boot         = true
-    source_image = "debian-cloud/debian-11"
+    source_image = var.source_image
     auto_delete  = true
   }
 
@@ -22,5 +22,5 @@ resource "google_compute_instance_group_manager" "web_instances" {
   version {
     instance_template = google_compute_instance_template.web_template.self_link
   }
-  target_size        = 3
+  target_size        = var.instance_target_size
 }
