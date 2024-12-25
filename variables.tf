@@ -82,3 +82,6 @@ variable "db_instance_name" {
 variable "db_version_name" {
     type = string  
 }
+variable "credentials" {
+  
+}

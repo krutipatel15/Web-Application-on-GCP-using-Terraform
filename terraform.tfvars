@@ -1,3 +1,4 @@
+credentials = "C:\\Users\\Kruti\\Desktop\\Web Application on GCP using Terraform\\gcp-serviceaccount.json"
 project-id = "high-mountain-444601-a7"
 region = "us-central1-a"
 vpc_network_name = "my-vpc"
